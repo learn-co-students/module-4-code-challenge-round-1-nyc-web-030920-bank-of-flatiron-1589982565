@@ -27,7 +27,7 @@ class App extends Component {
     } else if (event.target.name === "category") {
       this.setState({ category: event.target.value })
     } else if (event.target.name === "amount") {
-      this.setState({ amount: Number(event.target.value)}) // ONLY WORKS FOR POSTIVE NUMBERS
+      this.setState({ amount: Number(event.target.value) }) // ONLY WORKS FOR POSTIVE NUMBERS
     }
   }
 
@@ -46,17 +46,30 @@ class App extends Component {
         "amount": this.state.amount
       })
     })
+      .then(resp => resp.json())
+      .then(data => {
+        this.setState({ transaction: [...this.state.transaction, data] })
+      })
+  }
+  handleSearch = (event) => {
+    this.setState({ search: event.target.value });
+  }
+
+  toggleDelete = (id) => {
+    fetch(`${URL}/${id}`, {
+      method: "DELETE"
+    })
     .then(resp => resp.json())
     .then(data => {
-      this.setState({ transaction: [...this.state.transaction,data] })
+      let update = this.state.transaction.filter(transaction =>{
+        return transaction.id != id
+      })
+      this.setState({ transaction: update  });
     })
-  }
-  handleSearch=(event)=>{
-    this.setState({ search: event.target.value  });
   }
 
   render() {
-    let filter = this.state.transaction.filter(transaction =>{
+    let filter = this.state.transaction.filter(transaction => {
       return transaction.description.includes(this.state.search)
     })
 
@@ -66,7 +79,7 @@ class App extends Component {
           <h2>The Royal Bank of Flatiron</h2>
         </div>
         <AccountContainer
-          transaction={this.state.search===""? this.state.transaction: filter}
+          transaction={this.state.search === "" ? this.state.transaction : filter}
           date={this.state.date}
           description={this.state.description}
           category={this.state.category}
@@ -74,6 +87,7 @@ class App extends Component {
           search={this.state.search}
           fillForm={this.fillForm}
           toggleSubmit={this.toggleSubmit}
+          toggleDelete={this.toggleDelete}
           handleSearch={this.handleSearch}
         />
       </div>

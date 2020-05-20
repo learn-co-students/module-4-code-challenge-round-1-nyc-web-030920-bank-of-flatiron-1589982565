@@ -5,7 +5,7 @@ import AddTransactionForm from "./AddTransactionForm";
 
 class AccountContainer extends Component {
   render() {
-    let {transaction, date, description,category,amount,fillForm,toggleSubmit,search,handleSearch}= this.props
+    let {transaction, date, description,category,amount,fillForm,toggleSubmit,search,handleSearch,toggleDelete}= this.props
     return (
       <div>
         <Search 
@@ -20,7 +20,10 @@ class AccountContainer extends Component {
         fillForm={fillForm}
         toggleSubmit={toggleSubmit}
         />
-        <TransactionsList transaction={transaction}/>
+        <TransactionsList 
+        transaction={transaction}
+        toggleDelete={toggleDelete}
+        />
       </div>
     );
   }

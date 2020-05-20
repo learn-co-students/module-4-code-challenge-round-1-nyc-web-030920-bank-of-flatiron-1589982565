@@ -20,7 +20,7 @@ const TransactionsList = (props) => {
           </th>
         </tr>
         {props.transaction.map(transaction =>{
-          return <Transaction key={transaction.id} transaction={transaction} />
+          return <Transaction key={transaction.id} transaction={transaction} toggleDelete={props.toggleDelete} />
         })}
       </tbody>
     </table>
