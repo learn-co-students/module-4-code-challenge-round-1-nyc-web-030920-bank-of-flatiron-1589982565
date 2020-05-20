@@ -1,7 +1,6 @@
 import React from "react";
 
 const Transaction = (props) => {
-  // console.log("Transaction Props => ", props)
   const { handleDelete, id, date, description, category, amount } = props
   return (
     <tr>
