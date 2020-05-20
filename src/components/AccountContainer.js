@@ -8,12 +8,6 @@ class AccountContainer extends Component {
   state = {
     transactions: [],
     searched: '',
-    newTransaction: {
-      "date": '',
-      "description": '',
-      "category": '',
-      "amount": ''
-    }
   }
 
   getTransactions = () => {
@@ -30,7 +24,9 @@ class AccountContainer extends Component {
     this.setState({ searched: event.target.value})
   }
 
-  handleC
+  addNewTrans = (trans) => {
+    this.setState({transactions: [...this.state.transactions, trans]})
+  }
 
   render() {
     console.clear()
@@ -40,7 +36,7 @@ class AccountContainer extends Component {
     return (
       <div>
         <Search searched={searched} handleSearch={this.handleSearch}/>
-        <AddTransactionForm />
+        <AddTransactionForm addNewTrans={this.addNewTrans} />
         <TransactionsList transactions={filteredTransactions}/>
       </div>
     );
