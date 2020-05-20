@@ -3,8 +3,10 @@ import Transaction from "./Transaction";
 
 
 const TransactionsList = (props) => {
+  console.log(props)
     let bankAccount = props.bankAccount
-    .filter((bankAccount) => {return bankAccount.description.toLocaleLowerCase().indexOf(props.search.toLocaleLowerCase())!==-1})
+    // .filter((bankAccount) => {return bankAccount.description.toLocaleLowerCase().indexOf(props.search.toLocaleLowerCase())!==-1})
+    .filter((bankAccount) => {return bankAccount.description.indexOf(props.search)!==-1})
   return (
     <table className="ui celled striped padded table">
       <tbody>
