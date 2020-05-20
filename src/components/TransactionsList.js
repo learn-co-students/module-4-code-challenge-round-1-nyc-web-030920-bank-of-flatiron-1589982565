@@ -6,7 +6,7 @@ const TransactionsList = props => {
   // render transactions based on search, sorting, default listing
   const renderTransactions = () => {
 
-    const {search,transactions, sortBy, clearSortBy} = props
+    const {transactions, sortBy, search, clearSortBy} = props
 
     if (sortBy === 'category') {
       clearSortBy()
