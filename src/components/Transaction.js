@@ -2,7 +2,7 @@ import React from "react";
 
 const Transaction = (props) => {
 
-  const {date, description, category, amount} = props
+  const {id, date, description, category, amount, handleDelete} = props
 
   return (
     <tr>
@@ -10,7 +10,7 @@ const Transaction = (props) => {
       <td>{description}</td>
       <td>{category}</td>
       <td>{amount}</td>
-      <td><button>Delete</button></td>
+      <td><button onClick={() => handleDelete(id)} >Delete</button></td>
     </tr>
   );
 };

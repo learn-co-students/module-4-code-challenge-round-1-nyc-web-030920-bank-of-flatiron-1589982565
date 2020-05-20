@@ -62,6 +62,22 @@ class AccountContainer extends Component {
           })
         })
   }
+
+
+  handleDelete = (id) => {
+
+    const options = {
+      method: 'DELETE'
+    }
+    fetch(`${endpoint}/${id}`, options)
+      .then(r => r.json())
+      .then(this.setState({
+        transactions: this.state.transactions.filter((trans) => trans.id !== id)
+      }))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
   
   handleSearch = (e) => {
     this.setState({ search: e.target.value })
@@ -96,7 +112,7 @@ class AccountContainer extends Component {
           handleSubmit={this.handleSubmit}
           />
         
-        <TransactionsList transactions={filteredTrans} /> 
+        <TransactionsList transactions={filteredTrans} handleDelete={this.handleDelete} /> 
         {/* may need to change this to filteredTransactions for the search but u can still just call it transactions so nothing else should change. you would remove the this.state which i can do anyways cs of the const :p thanks for the reminder andrew of the past*/}
       </div>
     );
