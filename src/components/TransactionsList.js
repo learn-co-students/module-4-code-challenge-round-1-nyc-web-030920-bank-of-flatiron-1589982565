@@ -7,7 +7,7 @@ const TransactionsList = (props) => {
   if(props.abcCategorty){
     transaction=transaction.sort((a,b)=>a.category.localeCompare(b.category))
   }
-  if(props.abcCategorty){
+  if(props.abcDescription){
     transaction=transaction.sort((a,b)=>a.description.localeCompare(b.description))
   }
   return (
