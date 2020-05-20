@@ -1,13 +1,6 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "date": "2019-12-01",
-      "description": "Paycheck from Bob's Burgers",
-      "category": "Income",
-      "amount": 1000
-    },
-    {
       "id": 2,
       "date": "2019-12-01",
       "description": "South by Southwest Quinoa Bowl at Fresh & Co",
@@ -83,27 +76,6 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
-    },
-    {
-      "date": "2020-05-20",
-      "description": "Mcdonalds",
-      "category": "Food",
-      "amount": "20",
-      "id": 13
-    },
-    {
-      "date": "2020-05-06",
-      "description": "Pokemon",
-      "category": "Game",
-      "amount": "60",
-      "id": 14
-    },
-    {
-      "date": "2020-05-06",
-      "description": "Burger King",
-      "category": "Food",
-      "amount": "15",
-      "id": 15
     }
   ]
 }

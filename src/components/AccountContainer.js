@@ -51,8 +51,9 @@ class AccountContainer extends Component {
 
   deleteHandler = (id) => {
     fetch(API+"/"+id, {
-      method: "DELETE"
-    })
+      method: "DELETE",
+      headers : headers
+    }).then(this.setState({ transactions: this.state.transactions.filter(transaction => transaction.id === id ? null : transaction)})).catch(err => console.log(err))
   }
   resetForm = () => {
     this.setState({ date: "", description: "", category: "", amount: null})
@@ -96,6 +97,7 @@ class AccountContainer extends Component {
 
         <TransactionsList 
         transactions={sortedTransactions}
+        deleteHandler={this.deleteHandler}
         />
       </div>
     );

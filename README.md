@@ -61,9 +61,9 @@ As a user, I should be able to:
  Should i add a button or dropdown? Hmmm...
  Used a dropdown. Can sort and search. 
  Thought about using switch case but defaulted to ternary if/else. 
- 
-- Delete a transaction which will remove it from the table and delete it from the backend.
 
+- Delete a transaction which will remove it from the table and delete it from the backend.
+Would not let me put a button in table. resorted to another td. 
 ## Rubric
 
 You can find the rubric for this assessment [here](https://github.com/learn-co-curriculum/se-rubrics/blob/master/module-4.md).

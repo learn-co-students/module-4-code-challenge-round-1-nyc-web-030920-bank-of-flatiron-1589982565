@@ -2,7 +2,7 @@ import React from "react";
 import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
-  const { transactions } = props;
+  const { transactions , deleteHandler} = props;
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -19,8 +19,11 @@ const TransactionsList = (props) => {
           <th>
             <h3 className="ui center aligned header">Amount</h3>
           </th>
+          <th>
+            <h3 className="us center aligned header">Click to Delete</h3>
+          </th>
         </tr>
-        {transactions.map((transaction,index) => <Transaction key={index} {...transaction} />)}
+        {transactions.map((transaction,index) => <Transaction key={index} {...transaction} deleteHandler={deleteHandler}/>)}
       </tbody>
     </table>
   );
