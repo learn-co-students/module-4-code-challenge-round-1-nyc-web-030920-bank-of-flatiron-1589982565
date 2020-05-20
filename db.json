@@ -85,17 +85,17 @@
       "amount": -975
     },
     {
-      "date": "2020-05-01",
-      "description": "test",
+      "date": "2020-05-08",
+      "description": "Cool stuff",
       "category": "Dopeness",
       "amount": "99",
       "id": 13
     },
     {
-      "date": "2020-05-19",
-      "description": "ds",
-      "category": "ds",
-      "amount": "2",
+      "date": "2020-05-10",
+      "description": "Lame stuff",
+      "category": "Not Dope",
+      "amount": "1",
       "id": 14
     }
   ]
