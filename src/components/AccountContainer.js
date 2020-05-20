@@ -43,6 +43,14 @@ class AccountContainer extends Component {
     .then(transactions => this.setState({transactions}))
   }
 
+  deleteTransaction = (event) => {
+    console.log("delete transaction", event.target.dataset.id);
+    requests.deleteTransaction(event.target.dataset.id)
+    .then(data => {
+      this.getAllTransactions();
+    })
+  }
+
   componentDidMount() {
     this.getAllTransactions();
   }
@@ -57,7 +65,7 @@ class AccountContainer extends Component {
       <div>
         <Search updateFilter={this.updateFilter} filter={this.state.filter} />
         <AddTransactionForm submitTransaction={this.submitTransaction} />
-        <TransactionsList transactions={filteredTransactions} />
+        <TransactionsList transactions={filteredTransactions} deleteTransaction={this.deleteTransaction} />
       </div>
     );
   }
