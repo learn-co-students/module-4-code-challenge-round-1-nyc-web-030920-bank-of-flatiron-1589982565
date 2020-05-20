@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
+import SortTransactions from './SortTransactions'
 const transactionsUrl = 'http://localhost:6001/transactions'
 
 class AccountContainer extends Component {
@@ -14,7 +15,8 @@ class AccountContainer extends Component {
       description: '',
       category: '',
       amount: ''
-    }
+    },
+    sortBy: ''
   }
 
   componentDidMount() {
@@ -65,10 +67,29 @@ class AccountContainer extends Component {
     })
   }
 
+  sortOption = (event) => {
+    this.setState({
+      sortBy: event.target.value
+    })
+  }
+
+  filterTransaction = (type) => {
+    let sorted = []
+    if (type === 'all') {
+      sorted = [...this.state.transactions]
+    } else if (type === 'description') {
+      sorted = [...this.state.transactions].sort((a, b) => a.description > b.description ? 1 : -1)
+    } else if (type === 'category') {
+      sorted = [...this.state.transactions].sort((a, b) => a.category > b.category ? 1 : -1)
+    }
+    return sorted
+  }
+
 
   render() {
     console.log("🔫🔫🔫🔫🔫AccountContainer:", this.state)
     let filtered = [...this.state.transactions].filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
+    let sorted = this.filterTransaction(this.state.sortBy)
     return (
       <div>
         <Search search={this.state.search} handleChange={this.searchInput}/>
@@ -76,7 +97,14 @@ class AccountContainer extends Component {
         state={this.state.newTransaction} 
         handleChange={this.addNewTransaction} 
         handleSubmit={this.submitTransaction}/>
-        <TransactionsList transactions={filtered}/>
+
+        <SortTransactions type={this.state.sortBy} handleChange={this.sortOption}/>
+        {this.state.sortBy
+        ? <TransactionsList transactions={sorted}/>
+        : <TransactionsList transactions={filtered}/>
+        }
+
+        
       </div>
     );
   }
