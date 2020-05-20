@@ -19,9 +19,26 @@ class App extends Component {
   handleChange = (event) => {
   this.setState({[event.target.name]: event.target.value})
   }
-  // handleAddTransaction = () => {
-
-  // }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    fetch(API, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        date: this.state.date,
+        description: this.state.description,
+        category: this.state.category,
+        amount: this.state.amount
+      })
+    })
+    .then(resp => resp.JSON())
+    .then(transaction => {let newState = this.state.transactions;
+    newState.push(transaction)
+    this.setState({transactions: newState})})
+  }
   render() {
     console.log(this.state)
     return (
@@ -29,7 +46,7 @@ class App extends Component {
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer transactions={this.state.transactions} change={this.handleChange} />
+        <AccountContainer transactions={this.state.transactions} change={this.handleChange} submit={this.handleSubmit} />
       </div>
     );
   }
