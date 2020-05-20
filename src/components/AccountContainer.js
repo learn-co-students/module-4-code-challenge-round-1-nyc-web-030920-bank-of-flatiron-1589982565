@@ -5,11 +5,15 @@ import AddTransactionForm from "./AddTransactionForm";
 
 class AccountContainer extends Component {
   render() {
+    console.log('HEYYYYY', this.props.transactions)
+
     return (
       <div>
+        {/* {this.props.transactions.map(transaction) => <Transaction key={transaction.id} {...transaction}}} */}
+
         <Search />
         <AddTransactionForm />
-        <TransactionsList />
+        <TransactionsList transcations={this.props.transcations}/>
       </div>
     );
   }
