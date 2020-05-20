@@ -83,13 +83,6 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
-    },
-    {
-      "id": 13,
-      "date": "2020-05-02",
-      "description": "Likes to hug a lot",
-      "category": "Technology",
-      "amount": "500"
     }
   ]
 }

@@ -2,7 +2,8 @@ import React from "react";
 
 const Transaction = props => {
 
-  const {date, description, category, amount} = props.transaction
+  const {id, date, description, category, amount} = props.transaction
+  const {deleteTransaction} = props
 
   return (
     <tr>
@@ -10,6 +11,7 @@ const Transaction = props => {
       <td>{description}</td>
       <td>{category}</td>
       <td>{amount}</td>
+      <td><button onClick={() => deleteTransaction(id)}>Delete</button></td>
     </tr>
   );
 };

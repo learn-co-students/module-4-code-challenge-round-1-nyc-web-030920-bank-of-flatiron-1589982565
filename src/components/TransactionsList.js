@@ -9,11 +9,11 @@ const TransactionsList = props => {
 
     if (!search) { // if empty string for search (falsey), make truthy
       return (
-        transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction} />)
+        transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
       )
     } else {
       return (
-        transactions.filter(transaction => transaction.description.includes(search)).map(transaction => <Transaction key={transaction.id} transaction={transaction} />)
+        transactions.filter(transaction => transaction.description.includes(search)).map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
       )
     }
   }
@@ -33,6 +33,9 @@ const TransactionsList = props => {
           </th>
           <th>
             <h3 className="ui center aligned header">Amount</h3>
+          </th>
+          <th>
+            <h3 className="ui center aligned header">Remove Transaction</h3>
           </th>
         </tr>
         {renderTransactions()}

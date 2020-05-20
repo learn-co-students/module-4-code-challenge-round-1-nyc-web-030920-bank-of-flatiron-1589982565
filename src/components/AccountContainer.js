@@ -65,12 +65,30 @@ class AccountContainer extends Component {
     })
   }
 
+  deleteTransaction = id => {
+    
+    let transaction = this.state.transactions.find(transaction => transaction.id === id)
+
+    fetch(`${API}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(transaction)
+    })
+    .then(resp => resp.json())
+    .then(this.setState({
+      transactions: [...this.state.transactions.filter(transaction => transaction.id !== id)]
+    }))
+  }
+
   render() {
     return (
       <div>
         <Search search={this.state.search} handleSearch={this.handleSearch}/>
         <AddTransactionForm newTransaction={this.state.newTransaction} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-        <TransactionsList transactions={this.state.transactions} search={this.state.search}/>
+        <TransactionsList transactions={this.state.transactions} search={this.state.search} deleteTransaction={this.deleteTransaction}/>
       </div>
     );
   }
