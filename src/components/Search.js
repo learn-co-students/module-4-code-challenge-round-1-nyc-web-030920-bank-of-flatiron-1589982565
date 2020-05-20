@@ -7,7 +7,7 @@ const Search = props => {
   return (
     <div className="ui large fluid icon input">
       <select onChange={handleSortBy}>
-        <option>Sort By</option>
+        <option value="default">Sort By</option>
         <option value="category">Category</option>
         <option value="description">Description</option>
       </select>

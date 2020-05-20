@@ -6,7 +6,7 @@ const TransactionsList = props => {
   // render transactions based on search, sorting, default listing
   const renderTransactions = () => {
 
-    const {search,transactions, sortBy, clearSortBy} = props 
+    const {search,transactions, sortBy, clearSortBy} = props
 
     if (sortBy === 'category') {
       clearSortBy()
@@ -22,7 +22,7 @@ const TransactionsList = props => {
       return (
             transactions.filter(transaction => transaction.description.toLowerCase().includes(search)).map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
           )
-    } else if (!search) {
+    } else if (!search || sortBy === 'default') {
       return (
             transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
           )

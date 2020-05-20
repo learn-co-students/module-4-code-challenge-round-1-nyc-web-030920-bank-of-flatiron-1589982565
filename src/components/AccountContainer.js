@@ -90,6 +90,7 @@ class AccountContainer extends Component {
     })
   }
 
+  // resets sortBy state to allow for searching while transactions are sorted
   clearSortBy = () => {
     this.setState({
       sortBy: ""
