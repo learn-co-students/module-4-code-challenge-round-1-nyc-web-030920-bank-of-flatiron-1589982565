@@ -15,12 +15,16 @@ class AccountContainer extends Component {
     .then(data => this.setState({transactions: data}))
   }
 
+  addPurchase = (newPurchase) => {
+    this.setState({transactions: [...this.state.transactions, newPurchase]})
+  }
+
   render() {
     console.log(this.state.transactions)
     return (
       <div>
         <Search />
-        <AddTransactionForm />
+        <AddTransactionForm addPurchase={this.addPurchase}/>
         <TransactionsList transactions={this.state.transactions} />
       </div>
     );

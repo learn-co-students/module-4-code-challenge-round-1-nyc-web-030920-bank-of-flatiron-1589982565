@@ -83,6 +83,20 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-05-05",
+      "description": "New Dress",
+      "category": "Shopping",
+      "amount": "30.00",
+      "id": 13
+    },
+    {
+      "date": "2020-05-23",
+      "description": "Stuff to Make Shrimp Tacos",
+      "category": "Food",
+      "amount": "17.50",
+      "id": 14
     }
   ]
 }
