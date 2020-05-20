@@ -83,6 +83,41 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "",
+      "description": "Gamestop",
+      "category": "Entertainment",
+      "amount": "Entertainment",
+      "id": 13
+    },
+    {
+      "date": "",
+      "description": "Gamestop",
+      "category": "Entertainment",
+      "amount": "Entertainment",
+      "id": 14
+    },
+    {
+      "date": "",
+      "description": "McDonald's",
+      "category": "Food",
+      "amount": "14.32",
+      "id": 15
+    },
+    {
+      "date": "",
+      "description": "McDonald's",
+      "category": "Food",
+      "amount": "14.32",
+      "id": 16
+    },
+    {
+      "date": "",
+      "description": "AMC",
+      "category": "Entertainment",
+      "amount": "345.34",
+      "id": 17
     }
   ]
 }

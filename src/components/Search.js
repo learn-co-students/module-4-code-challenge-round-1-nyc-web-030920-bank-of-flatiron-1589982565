@@ -1,18 +1,30 @@
 import React from "react";
 
-const Search = () => {
-  return (
-    <div className="ui large fluid icon input">
-      <input
-        type="text"
-        placeholder={"Search your Recent Transactions"}
-        onChange={() => {
-          console.log("Searching...");
-        }}
-      />
-      <i className="circular search link icon"></i>
-    </div>
-  );
+class Search extends React.Component {
+  state = { 
+    searchInput: ""
+  }
+
+  setSearchInput = (event) => { 
+    this.setState({
+      searchInput: event.target.value
+    })
+  }
+
+  render() {
+    return (
+      <div className="ui large fluid icon input">
+        <input
+          type="text"
+          name="searchBar"
+          placeholder={"Search your Recent Transactions"}
+          value={this.state.searchInput}
+          onChange={() => this.setSearchInput}
+        />
+        <i onClick={this.props.submitSearch} className="circular search link icon"></i>
+      </div>
+    )
+  }
 };
 
 export default Search;
