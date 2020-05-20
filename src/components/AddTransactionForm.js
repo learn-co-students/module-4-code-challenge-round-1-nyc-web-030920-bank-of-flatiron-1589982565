@@ -17,6 +17,7 @@ class AddTransactionForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    const {date, description, category, amount} = this.state
     fetch('http://localhost:6001/transactions', {
       method: 'POST',
       headers: {
@@ -24,10 +25,10 @@ class AddTransactionForm extends Component {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        date: this.state.date,
-        description: this.state.description,
-        category: this.state.category,
-        amount: this.state.amount
+        date: date,
+        description: description,
+        category: category,
+        amount: amount
       })
     })
     .then(response => response.json())
@@ -41,18 +42,18 @@ class AddTransactionForm extends Component {
   }
 
   render() {
-    // console.log('FormState=', this.state)
+    const {date, description, category, amount} = this.state
     return (
       <div className="ui segment">
         <form className="ui form" onSubmit={this.handleSubmit}>
           <div className="inline fields">
-            <input type="date" name="date" value={this.state.date} onChange={this.handleChange}/>
-            <input type="text" name="description" value={this.state.description} placeholder="Description" onChange={this.handleChange} />
-            <input type="text" name="category" value={this.state.category} placeholder="Category" onChange={this.handleChange} />
+            <input type="date" name="date" value={date} onChange={this.handleChange}/>
+            <input type="text" name="description" value={description} placeholder="Description" onChange={this.handleChange} />
+            <input type="text" name="category" value={category} placeholder="Category" onChange={this.handleChange} />
             <input
               type="number"
               name="amount"
-              value={this.state.amount}
+              value={amount}
               onChange={this.handleChange}
               placeholder="Amount"
               step="0.01"
