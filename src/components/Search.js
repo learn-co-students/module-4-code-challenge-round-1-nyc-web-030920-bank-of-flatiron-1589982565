@@ -6,7 +6,7 @@ const Search = (props) => {
       <input
         type="text"
         value={props.query}
-        placeholder={"Search your Recent Transactions"}
+        placeholder={"Search your Recent Transactions by Description or Category"}
         onChange={(event) => {
           props.searchHandler(event)
         }}
