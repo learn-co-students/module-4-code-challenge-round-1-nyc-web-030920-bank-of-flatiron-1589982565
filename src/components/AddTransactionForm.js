@@ -4,11 +4,11 @@ class AddTransactionForm extends Component {
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form onSubmit={this.props.submitTransaction} className="ui form">
           <div className="inline fields">
-            <input type="date" name="date" />
-            <input type="text" name="description" placeholder="Description" />
-            <input type="text" name="category" placeholder="Category" />
+            <input name="date" value={this.props.submitTransactionFormInputHandler} type="date" name="date" />
+            <input name="description" value={this.props.submitTransactionFormInputHandler} type="text" name="description" placeholder="Description" />
+            <input name="date" value={this.props.submitTransactionFormInputHandler} type="text" name="category" placeholder="Category" />
             <input
               type="number"
               name="amount"
