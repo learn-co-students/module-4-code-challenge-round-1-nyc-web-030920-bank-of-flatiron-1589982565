@@ -15,7 +15,7 @@ class AccountContainer extends Component {
     transactions: [],
     sort: "", 
     description: "",
-    amount: null,
+    amount: undefined,
     category: "",
     date: ""
   }
@@ -30,8 +30,6 @@ class AccountContainer extends Component {
     this.setState({sort: event.target.value})
   }
 
-
-
   updateInput = (event) => {
     if(event.target.name === "date"){
       this.setState({date: event.target.value})
@@ -42,8 +40,9 @@ class AccountContainer extends Component {
     else if(event.target.name === "category"){
       this.setState({category: event.target.value})
     }
+    // figured it out it's because i set the state for category and not amount.... haha 
     else if(event.target.name === "amount"){
-      this.setState({category: event.target.value})
+      this.setState({amount: event.target.value})
     }
   }
 
