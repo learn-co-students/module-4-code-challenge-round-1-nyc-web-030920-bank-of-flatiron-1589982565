@@ -25,7 +25,13 @@ class AccountContainer extends Component {
   }
 
   removeTransaction = (id) => {
-    
+    let removedTransaction = this.state.transactions.find(transaction => transaction.id === id)
+    this.setState({
+      transactions: this.state.transactions.filter(transaction => transaction !== removedTransaction)
+    })
+    fetch(`http://localhost:6001/transactions/${id}`, {
+      method: 'DELETE'
+    })
   }
 
   render() {
