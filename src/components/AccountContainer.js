@@ -55,6 +55,18 @@ class AccountContainer extends Component {
     // console.log("Search Target Value => ", e.target.value)
   }
 
+  handleDelete = (id) => {
+    fetch(`http://localhost:6001/transactions/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json'
+      },
+      })
+      .then(response => response.json())
+      this.setState({transactions: this.state.transactions.filter(trans => trans.id === id ? null : trans)})
+  }
+
   render() {
     // console.log("AccountContainer State =>", this.state)
     let filteredTransactions = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
@@ -62,7 +74,7 @@ class AccountContainer extends Component {
       <div>
         <Search handleSearch={this.handleSearch} search={this.state.search} />
         <AddTransactionForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} newTransaction={this.state.newTransaction} />
-        <TransactionsList transactions={filteredTransactions} />
+        <TransactionsList handleDelete={this.handleDelete} transactions={filteredTransactions} />
       </div>
     );
   }

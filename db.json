@@ -8,13 +8,6 @@
       "amount": 1000
     },
     {
-      "id": 2,
-      "date": "2019-12-01",
-      "description": "South by Southwest Quinoa Bowl at Fresh & Co",
-      "category": "Food",
-      "amount": -10.55
-    },
-    {
       "id": 3,
       "date": "2019-12-02",
       "description": "South by Southwest Quinoa Bowl at Fresh & Co",
@@ -83,34 +76,6 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
-    },
-    {
-      "date": "2020-05-08",
-      "description": "Something",
-      "category": "Gift",
-      "amount": "100",
-      "id": 13
-    },
-    {
-      "date": "2020-05-08",
-      "description": "Another thing",
-      "category": "Gift",
-      "amount": "1000",
-      "id": 14
-    },
-    {
-      "date": "2020-05-14",
-      "description": "New MacBook Pro",
-      "category": "Work",
-      "amount": "1000",
-      "id": 15
-    },
-    {
-      "date": "2020-05-14",
-      "description": "New Puppy",
-      "category": "Home",
-      "amount": "3000",
-      "id": 16
     }
   ]
 }

@@ -20,7 +20,7 @@ const TransactionsList = (props) => {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {props.transactions.map(trans => <Transaction key={trans.id} {...trans}/>)}
+        {props.transactions.map(trans => <Transaction handleDelete={props.handleDelete} key={trans.id} {...trans}/>)}
       </tbody>
     </table>
   );
