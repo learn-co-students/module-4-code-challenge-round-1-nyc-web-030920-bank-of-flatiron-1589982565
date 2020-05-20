@@ -92,20 +92,6 @@
       "id": 13
     },
     {
-      "date": "2020-05-23",
-      "description": "McDonalds",
-      "category": "Fast food",
-      "amount": "40",
-      "id": 14
-    },
-    {
-      "date": "2020-05-23",
-      "description": "burgerrrs",
-      "category": "Food",
-      "amount": "2",
-      "id": 15
-    },
-    {
       "date": "2020-05-29",
       "description": "cookies",
       "category": "Food",

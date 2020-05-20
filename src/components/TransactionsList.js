@@ -5,20 +5,20 @@ const TransactionsList = (props) => {
   // console.log(props.account)
 
 let account=props.account.filter((a)=>{return a.description.toLocaleLowerCase().indexOf(props.search.toLocaleLowerCase())!==-1})
-//=======================================================================
-if(props.sort==='none'){
-  account=props.account
-}
+//==========================Effects my filter search bar=============================================
+// if(props.sort==='none'){
+//   account=props.account
+// }
 
 
-if(props.sort==='description'){
-  account=props.account.sort((a,b)=>a.description.localeCompare(b.description))
-}
+// if(props.sort==='description'){
+//   account=props.account.sort((a,b)=>a.description.localeCompare(b.description))
+// }
 
 
-if(props.sort ==='category'){
-  account=props.account.sort((a,b)=>a.category.localeCompare(b.category))
-}
+// if(props.sort ==='category'){
+//   account=props.account.sort((a,b)=>a.category.localeCompare(b.category))
+// }
 
   return (
     <table className="ui celled striped padded table">
@@ -37,7 +37,7 @@ if(props.sort ==='category'){
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {account.map((a)=>{return <Transaction   key={a.id} {...a}/>})}
+        {account.map((a)=>{return <Transaction   key={a.id} {...a}   handleDelete={props.handleDelete}/>})}
       </tbody>
     </table>
   );

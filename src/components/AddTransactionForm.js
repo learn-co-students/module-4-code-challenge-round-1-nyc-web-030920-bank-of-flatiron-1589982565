@@ -19,6 +19,7 @@ class AddTransactionForm extends Component {
               value={amount}
                onChange={handleChange}
             />
+           
           </div>
           <button className="ui button" type="submit" >
             Add Transaction

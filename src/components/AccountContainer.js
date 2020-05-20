@@ -66,14 +66,22 @@ filterSearch=(e)=>{
   this.setState({[name]:value})
 }
 
-//===========================================================================
+//==================Delete Transaction=========================================================
+handleDelete=(id)=>{
+  fetch(`http://localhost:6001/transactions/${id}`,{
+    method:'DELETE'
+  })
+  .then(this.getAccount)
+}
+
+//==============================================================================================
 
   render() {
     return (
       <div>
         <Search {...this.state} filterSearch={this.filterSearch}/>
         <AddTransactionForm {...this.state} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
-        <TransactionsList {...this.state}/>
+        <TransactionsList {...this.state} handleDelete={this.handleDelete}/>
       </div>
     );
   }
