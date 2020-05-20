@@ -1,7 +1,23 @@
 import React from "react";
 import Transaction from "./Transaction";
 
-const TransactionsList = () => {
+const TransactionsList = props => {
+  
+  const renderTransactions = () => {
+
+    const {search,transactions} = props 
+
+    if (!search) { // if empty string for search (falsey), make truthy
+      return (
+        transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction} />)
+      )
+    } else {
+      return (
+        transactions.filter(transaction => transaction.description.includes(search)).map(transaction => <Transaction key={transaction.id} transaction={transaction} />)
+      )
+    }
+  }
+
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -19,7 +35,7 @@ const TransactionsList = () => {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {/* render Transactions here */}
+        {renderTransactions()}
       </tbody>
     </table>
   );
