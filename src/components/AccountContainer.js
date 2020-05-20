@@ -7,6 +7,7 @@ class AccountContainer extends Component {
 
   state = {
     transactions: [],
+    search: "",
       newTransaction: {
         date: "",
         description: "",
@@ -47,17 +48,21 @@ class AccountContainer extends Component {
                                           category: "",
                                           amount: ""}
                                       }))
-      
-    console.log("Inside the handle Submit")
+  }
+
+  handleSearch = (e) => {
+    this.setState({search: e.target.value})
+    // console.log("Search Target Value => ", e.target.value)
   }
 
   render() {
     // console.log("AccountContainer State =>", this.state)
+    let filteredTransactions = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       <div>
-        <Search />
+        <Search handleSearch={this.handleSearch} search={this.state.search} />
         <AddTransactionForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} newTransaction={this.state.newTransaction} />
-        <TransactionsList transactions={this.state.transactions} />
+        <TransactionsList transactions={filteredTransactions} />
       </div>
     );
   }
