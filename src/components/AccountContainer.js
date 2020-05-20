@@ -55,6 +55,12 @@ class AccountContainer extends Component {
     .then(submitedData => this.setState({description: "", amount: 0, date: "", category: "", transactions: [...this.state.transactions, submitedData]}))
   }
 
+  // this deleted my whole DB so that's why i have it commented out, going back and trying to fix the amount input before i try and fix this
+  // deleteTransaction = (id) => {
+  //   this.setState({transactions: this.state.transactions.filter(transaction => transaction.id !== id)})
+  //   fetch(`${ENDPOINT}/${id}`, {method: "DELETE"})
+  // }
+
   render() {
     console.log(this.state)
     const {description, category, amount, date} = this.state;
@@ -69,7 +75,9 @@ class AccountContainer extends Component {
         updateInput={this.updateInput}
         submitHandler={this.submitHandler}
         />
-        <TransactionsList transactions={transaction}/>
+        <TransactionsList 
+        transactions={transaction} 
+        deleteTransaction={this.deleteTransaction}/>
       </div>
     );
   }
