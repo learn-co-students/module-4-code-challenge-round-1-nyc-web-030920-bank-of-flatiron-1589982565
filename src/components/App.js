@@ -27,13 +27,12 @@ class App extends Component {
     } else if (event.target.name === "category") {
       this.setState({ category: event.target.value })
     } else if (event.target.name === "amount") {
-      this.setState({ amount: parseFloat(event.target.value) }) // ONLY WORKS FOR POSTIVE NUMBERS
+      this.setState({ amount: Number(event.target.value)}) // ONLY WORKS FOR POSTIVE NUMBERS
     }
   }
 
   toggleSubmit = (event) => {
     event.preventDefault()
-    console.log('Here')
     fetch(URL, {
       method: "POST",
       headers: {

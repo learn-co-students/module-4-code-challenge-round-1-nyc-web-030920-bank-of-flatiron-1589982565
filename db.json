@@ -104,6 +104,13 @@
       "category": "Education ",
       "amount": 200,
       "id": 15
+    },
+    {
+      "date": "2020-05-21",
+      "description": "Test 4",
+      "category": "Education ",
+      "amount": -100,
+      "id": 16
     }
   ]
 }
