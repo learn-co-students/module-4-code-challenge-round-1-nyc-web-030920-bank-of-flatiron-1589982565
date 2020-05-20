@@ -47,6 +47,12 @@ class AccountContainer extends Component {
   componentDidMount(){
     this.getTransactions()
   }
+  deleteTransaction=(id)=>{
+      fetch(`http://localhost:6001/transactions/${id}`, {
+      method: 'DELETE'
+    })
+    .then(this.getTransactions)
+  }
   handleSearch=(event)=>{
     const{name,value}=event.target
     this.setState({[name]:value})
@@ -60,7 +66,7 @@ class AccountContainer extends Component {
       <div>
         <Search handleSearch={this.handleSearch}{...this.setState}/>
         <AddTransactionForm handleChange={this.handleChange}{...this.state} AddTransactions={this.AddTransactions}/>
-        <TransactionsList {...this.state} />
+        <TransactionsList deleteTransaction={this.deleteTransaction}{...this.state} />
       </div>
     );
   }
