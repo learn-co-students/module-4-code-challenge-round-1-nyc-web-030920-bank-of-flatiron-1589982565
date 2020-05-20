@@ -2,6 +2,7 @@ import React from "react";
 import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
+  console.log('translist props:', props.transactions)
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -19,7 +20,7 @@ const TransactionsList = (props) => {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {props.transactons.map(transaction => <Transaction {...transaction} />)}
+        {props.transactions.map(transaction => <Transaction {...transaction} key={transaction.id}/>)}
       </tbody>
     </table>
   );
