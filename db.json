@@ -104,6 +104,20 @@
       "category": "Food",
       "amount": "2",
       "id": 15
+    },
+    {
+      "date": "2020-05-29",
+      "description": "cookies",
+      "category": "Food",
+      "amount": "5.00",
+      "id": 16
+    },
+    {
+      "date": "2020-05-23",
+      "description": "Carne Asada",
+      "category": "Food",
+      "amount": "30.00",
+      "id": 17
     }
   ]
 }

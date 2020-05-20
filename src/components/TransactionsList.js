@@ -5,7 +5,20 @@ const TransactionsList = (props) => {
   // console.log(props.account)
 
 let account=props.account.filter((a)=>{return a.description.toLocaleLowerCase().indexOf(props.search.toLocaleLowerCase())!==-1})
+//=======================================================================
+if(props.sort==='none'){
+  account=props.account
+}
 
+
+if(props.sort==='description'){
+  account=props.account.sort((a,b)=>a.description.localeCompare(b.description))
+}
+
+
+if(props.sort ==='category'){
+  account=props.account.sort((a,b)=>a.category.localeCompare(b.category))
+}
 
   return (
     <table className="ui celled striped padded table">

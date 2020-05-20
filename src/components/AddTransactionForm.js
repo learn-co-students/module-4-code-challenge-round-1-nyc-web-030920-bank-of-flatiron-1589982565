@@ -2,25 +2,36 @@ import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
   render() {
+    const{date,description,amount,category, handleChange, handleSubmit, sort}=this.props
+
     return (
       <div className="ui segment">
-        <form className="ui form" onSubmit={this.props.handleSubmit}>
+        <form className="ui form" onSubmit={handleSubmit}>
           <div className="inline fields">
-            <input type="date" name="date" value={this.props.date} onChange={this.props.handleChange} />
-            <input type="text" name="description" placeholder="Description" value={this.props.description} onChange={this.props.handleChange} />
-            <input type="text" name="category" placeholder="Category" value={this.props.category} onChange={this.props.handleChange}/>
+            <input type="date" name="date" value={date} onChange={handleChange} />
+            <input type="text" name="description" placeholder="Description" value={description} onChange={handleChange} />
+            <input type="text" name="category" placeholder="Category" value={category} onChange={handleChange}/>
             <input
               type="number"
               name="amount"
               placeholder="Amount"
               step="0.01"
-              value={this.props.amount}
-               onChange={this.props.handleChange}
+              value={amount}
+               onChange={handleChange}
             />
           </div>
           <button className="ui button" type="submit" >
             Add Transaction
-          </button>
+          </button><br/>
+
+          <label >Sort By:</label>
+
+            <select value={sort} onChange={handleChange} name='sort'>
+              <option value="none">None</option>
+              <option value="category">Category</option>
+              <option value="description">Description</option>
+              
+            </select>
         </form>
       </div>
     );

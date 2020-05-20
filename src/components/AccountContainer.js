@@ -11,7 +11,8 @@ class AccountContainer extends Component {
     description:'',
     category:'',
     amount:'',
-    date:''
+    date:'',
+    sort:'none'
   }
 //===========FETCH DATA======================================
 getAccount=()=>{
