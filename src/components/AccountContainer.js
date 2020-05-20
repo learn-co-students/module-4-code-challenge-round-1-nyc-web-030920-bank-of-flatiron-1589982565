@@ -10,7 +10,8 @@ class AccountContainer extends Component {
       date: '',
       description:'',
       category: '',
-      amount: ''
+      amount: '',
+      search: ''
   }
 
 
@@ -48,10 +49,15 @@ class AccountContainer extends Component {
     .then(this.getInfo)
   }
 
+  handleSearch = (event) => {
+      const{name, value}= event.target
+      this.setState({[name]: value})
+  }
+
   render() {
     return (
       <div>
-        <Search />
+        <Search {...this.state} handleSearch={this.handleSearch}/>
         <AddTransactionForm {...this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
         <TransactionsList {...this.state}/>
       </div>
