@@ -58,6 +58,10 @@ These deliverables are not required to pass the code challenge, but if you have 
 As a user, I should be able to:
 
 - Sort transactions alphabetically by category or description.
+ Should i add a button or dropdown? Hmmm...
+ Used a dropdown. Can sort and search. 
+ Thought about using switch case but defaulted to ternary if/else. 
+ 
 - Delete a transaction which will remove it from the table and delete it from the backend.
 
 ## Rubric

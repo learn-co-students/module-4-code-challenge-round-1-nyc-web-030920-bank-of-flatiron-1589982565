@@ -5,6 +5,7 @@ import AddTransactionForm from "./AddTransactionForm";
 const API = "http://localhost:6001/transactions"
 const headers = { 'Content-Type': 'application/json',
 'Accept': 'application/json'}
+
 class AccountContainer extends Component {
   state = {
     transactions: [],
@@ -12,7 +13,8 @@ class AccountContainer extends Component {
     description: "",
     category: "",
     amount: null,
-    query: ""
+    query: "",
+    sortBy: "none"
   }
 
   componentDidMount(){
@@ -47,6 +49,11 @@ class AccountContainer extends Component {
     ).then(this.resetForm())
   }
 
+  deleteHandler = (id) => {
+    fetch(API+"/"+id, {
+      method: "DELETE"
+    })
+  }
   resetForm = () => {
     this.setState({ date: "", description: "", category: "", amount: null})
   }
@@ -59,18 +66,37 @@ class AccountContainer extends Component {
     this.setState({query: event.target.value})
   }
 
+  dropDownHandler = (event) => {
+    this.setState({sortBy: event.target.value})
+  }
+
   render() {
-    let allTransactions = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.query.toLowerCase()))
-    console.log(this.state.query)
+    const { transactions, query, sortBy } = this.state;
+    //only account for case sensitivity. Not account for spaces, etc. 
+    let allTransactions = transactions.filter(transaction => transaction.description.toLowerCase().includes(query.toLowerCase()))
+    let sortedTransactions = (sortBy !== "none") ? (sortBy === "category") ? allTransactions.sort((a,b) => a.category < b.category ? -1 : 1) : allTransactions.sort((a,b) => a.description < b.description ? -1 : 1) : allTransactions
+    // can search & sort. 
+    console.log(this.state.sortBy)
     return (
       <div>
         <Search 
-        query={this.state.query}
-        searchHandler={this.searchHandler}/>
+        query={query}
+        searchHandler={this.searchHandler}
+        />
         <AddTransactionForm 
         formHandler={this.formHandler} 
-        submitHandler={this.submitHandler}/>
-        <TransactionsList transactions={allTransactions}/>
+        submitHandler={this.submitHandler}
+        />
+            <label htmlFor="sort">Sort Alphabetically by:</label>
+            <select onChange={this.dropDownHandler} id="sort">
+              <option value="none">None</option>
+              <option value="category">Category</option>
+              <option value="description">Description</option>
+            </select>
+
+        <TransactionsList 
+        transactions={sortedTransactions}
+        />
       </div>
     );
   } 
