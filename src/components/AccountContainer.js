@@ -9,11 +9,13 @@ const header = {
 }
 
 class AccountContainer extends Component {
+  /* changed the amount to null so it increments now but it updates the category as well but when you delete the number
+  from the category and add your input it works fine, figuring out why it's updating the category now*/
   state = {
     transactions: [],
     sort: "", 
     description: "",
-    amount: 0,
+    amount: null,
     category: "",
     date: ""
   }
@@ -27,6 +29,8 @@ class AccountContainer extends Component {
   searchTransactions = (event) => {
     this.setState({sort: event.target.value})
   }
+
+
 
   updateInput = (event) => {
     if(event.target.name === "date"){
