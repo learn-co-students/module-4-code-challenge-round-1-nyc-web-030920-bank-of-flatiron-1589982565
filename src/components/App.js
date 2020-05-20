@@ -8,7 +8,8 @@ class App extends Component {
     date: "",
     description: "",
     category: "",
-    amount: ""
+    amount: "",
+    search: ""
   }
 
   componentDidMount() {
@@ -51,22 +52,30 @@ class App extends Component {
       this.setState({ transaction: [...this.state.transaction,data] })
     })
   }
+  handleSearch=(event)=>{
+    this.setState({ search: event.target.value  });
+  }
 
   render() {
-    console.log(this.state)
+    let filter = this.state.transaction.filter(transaction =>{
+      return transaction.description.includes(this.state.search)
+    })
+
     return (
       <div className="ui raised segment">
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
         <AccountContainer
-          transaction={this.state.transaction}
+          transaction={this.state.search===""? this.state.transaction: filter}
           date={this.state.date}
           description={this.state.description}
           category={this.state.category}
           amount={this.state.amount}
+          search={this.state.search}
           fillForm={this.fillForm}
           toggleSubmit={this.toggleSubmit}
+          handleSearch={this.handleSearch}
         />
       </div>
     );
