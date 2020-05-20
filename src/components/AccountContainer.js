@@ -23,7 +23,7 @@ class AccountContainer extends Component {
       .then(transactions => this.setState({transactions}))
   }
 
-  changeInput = (event) => {
+  addNewTransaction = (event) => {
     this.setState({
       newTransaction: {
         ...this.state.newTransaction,
@@ -33,12 +33,12 @@ class AccountContainer extends Component {
   }
   
   //1. make a post to database with user input data
-  //2. remember to parseInt the amount
+  //2. remember to parse the amount
   //3. add the new data to this.state.transactions
   //4. clear the this.state.newTransaction
   submitTransaction = (event) => {
     event.preventDefault()
-    let newTransaction = {...this.state.newTransaction, amount: parseInt(this.state.newTransaction.amount)}
+    let newTransaction = {...this.state.newTransaction, amount: parseFloat(this.state.newTransaction.amount)}
     fetch(transactionsUrl, {
       method: 'POST',
       headers: {
@@ -58,16 +58,25 @@ class AccountContainer extends Component {
       }
     }))
   }
+
+  searchInput = (event) => {
+    this.setState({
+      search: event.target.value
+    })
+  }
+
+
   render() {
     console.log("🔫🔫🔫🔫🔫AccountContainer:", this.state)
+    let filtered = [...this.state.transactions].filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       <div>
-        <Search />
+        <Search search={this.state.search} handleChange={this.searchInput}/>
         <AddTransactionForm 
         state={this.state.newTransaction} 
-        handleChange={this.changeInput} 
+        handleChange={this.addNewTransaction} 
         handleSubmit={this.submitTransaction}/>
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList transactions={filtered}/>
       </div>
     );
   }
