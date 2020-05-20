@@ -71,9 +71,6 @@ class AddTransactionForm extends Component {
           <button className="ui button" type="submit" >
             Add Transaction
           </button>
-          {/* <select name="skills" multiple="" className="ui fluid dropdown">
-            <input></input>
-          </select> */}
         </form>
       </div>
     );
