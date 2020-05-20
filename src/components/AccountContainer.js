@@ -70,12 +70,9 @@ class AccountContainer extends Component {
 
   render() {
 
-
-
-
     const {date, description, category, amount, transactions, search} = this.state
 
-    let filteredTrans = [...transactions]
+    let filteredTrans = [...transactions.sort((a, b) => a.category.localeCompare(b.category))]
 
     if(search.length > 0) {
       filteredTrans = filteredTrans.filter(trans => {
@@ -100,7 +97,7 @@ class AccountContainer extends Component {
           />
         
         <TransactionsList transactions={filteredTrans} /> 
-        {/* may need to change this to filteredTransactions for the search but u can still just call it transactions so nothing else should change. you would remove the this.state which i can do anyways cs of the const :p */}
+        {/* may need to change this to filteredTransactions for the search but u can still just call it transactions so nothing else should change. you would remove the this.state which i can do anyways cs of the const :p thanks for the reminder andrew of the past*/}
       </div>
     );
   }
