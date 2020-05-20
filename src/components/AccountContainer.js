@@ -30,8 +30,9 @@ class AccountContainer extends Component {
         // i realize this could probably all be done at once without
         // calling another function, just want to get it to work first
         .then(addNewTransaction => this.updateTransactions(addTransaction) )
-
   }
+
+  
 
   updateTransactions = (transaction) => {
     this.setState({ transactions: [...this.state.transactions, transaction]})
