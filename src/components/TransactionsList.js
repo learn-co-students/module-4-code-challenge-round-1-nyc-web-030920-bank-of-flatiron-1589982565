@@ -2,6 +2,7 @@ import React from "react";
 import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
+  props.transactions.filter((t) => {return t.description.toLowerCase().indexOf(props.search.toLowerCase()) !== -1 }) 
   return (
     <table className="ui celled striped padded table">
       <tbody>

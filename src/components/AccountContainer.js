@@ -10,7 +10,8 @@ class AccountContainer extends Component {
     date: '',
     description: '',
     category: '',
-    amount: ''
+    amount: '',
+    search: ''
   }
 
   componentDidMount(){
@@ -56,18 +57,24 @@ class AccountContainer extends Component {
     })
   }
 
-  handleSearch = () => {
+  handleSearch = (event) => {
     console.log('searching')
+    console.log('event: ', event)
+    console.log('event.target: ', event.target)
+    console.log('event.target.value: ', event.target.value)
+
+    let {name, value} = event.target
+    this.setState({[name]: value})
   }
 
   render() {
     console.log(this.state)
-    let { transactions, date, description, category, amount } = this.state
+    let { transactions, date, description, category, amount, search } = this.state
     return (
       <div>
         <Search handleSearch={this.handleSearch} />
         <AddTransactionForm handleChange={this.handleChange} date={date} description={description} category={category} amount={amount} handleSubmit={this.handleSubmit}/>
-        <TransactionsList transactions={transactions} />
+        <TransactionsList transactions={transactions} search={search}/>
       </div>
     );
   }
