@@ -47,9 +47,18 @@ class AddTransactionForm extends Component {
       <div className="ui segment">
         <form className="ui form" onSubmit={this.handleSubmit}>
           <div className="inline fields">
-            <input type="date" name="date" value={date} onChange={this.handleChange}/>
-            <input type="text" name="description" value={description} placeholder="Description" onChange={this.handleChange} />
-            <input type="text" name="category" value={category} placeholder="Category" onChange={this.handleChange} />
+            <input type="date" name="date" 
+            value={date} 
+            onChange={this.handleChange}
+            />
+            <input type="text" name="description" 
+            value={description} placeholder="Description" 
+            onChange={this.handleChange} 
+            />
+            <input type="text" name="category" 
+            value={category} placeholder="Category" 
+            onChange={this.handleChange} 
+            />
             <input
               type="number"
               name="amount"
@@ -62,6 +71,9 @@ class AddTransactionForm extends Component {
           <button className="ui button" type="submit" >
             Add Transaction
           </button>
+          {/* <select name="skills" multiple="" className="ui fluid dropdown">
+            <input></input>
+          </select> */}
         </form>
       </div>
     );

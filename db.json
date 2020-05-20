@@ -104,6 +104,13 @@
       "category": "Fitness",
       "amount": "19.99",
       "id": 16
+    },
+    {
+      "date": "2020-05-04",
+      "description": "Champagne",
+      "category": "Celebration",
+      "amount": "38.00",
+      "id": 17
     }
   ]
 }
