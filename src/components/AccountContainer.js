@@ -35,7 +35,16 @@ componentDidMount() {
 }
 
 searchFunc = (query) => {
-  const filtered = this.state.transactions.filter(transaction => transaction.description === query)
+  
+  const originalArray = this.state.transactions
+  let filtered
+  if (query !== '') {
+  filtered = originalArray.filter(transaction => transaction.description.includes(query))
+  }
+  else {
+    this.fetchData()
+  filtered = this.state.transactions
+}
   this.setState({transactions: filtered})
 }
 

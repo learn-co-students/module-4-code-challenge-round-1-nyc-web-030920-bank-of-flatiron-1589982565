@@ -22,7 +22,6 @@ handleAmountChange = (event) => {
 }
 
 
-
   render() {
     return (
       <div className="ui segment">

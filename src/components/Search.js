@@ -7,7 +7,7 @@ class Search extends Component {
   }
   handleSearch = (event) => {
     this.setState({currentQuery: event.target.value})
-    this.props.searchFunc(this.state.currentQuery)
+    this.props.searchFunc(event.target.value)
     console.log(this.state)
     
   }
