@@ -37,4 +37,4 @@ if it doesn't work right/ u need to do transactions={...etc}
 
 advanced: 
 √ Sort transactions alphabetically by category or description.
- Delete a transaction which will remove it from the table and delete it from the backend.
+√ Delete a transaction which will remove it from the table and delete it from the backend.
