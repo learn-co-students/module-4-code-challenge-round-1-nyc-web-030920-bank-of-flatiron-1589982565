@@ -85,41 +85,6 @@
       "amount": -975
     },
     {
-      "dayTime": "",
-      "description": "burgers and fries",
-      "category": "food",
-      "amount": "",
-      "id": 13
-    },
-    {
-      "date": "",
-      "description": "chinese food",
-      "category": "food",
-      "amount": "",
-      "id": 14
-    },
-    {
-      "dayTime": "",
-      "description": "Second Test",
-      "category": "Testing",
-      "amount": "100",
-      "id": 15
-    },
-    {
-      "dateTime": "",
-      "description": "dine ins drive ins",
-      "category": "Testing",
-      "amount": "20",
-      "id": 16
-    },
-    {
-      "date": "2021-03-03",
-      "description": "think",
-      "category": "it works",
-      "amount": "100",
-      "id": 19
-    },
-    {
       "date": "2023-06-05",
       "description": "chili fries",
       "category": "food",
@@ -132,6 +97,20 @@
       "category": "beauty",
       "amount": "1000",
       "id": 21
+    },
+    {
+      "date": "2020-02-02",
+      "description": "phone",
+      "category": "electronics",
+      "amount": "1000000",
+      "id": 22
+    },
+    {
+      "date": "2019-02-02",
+      "description": "pupusas😋",
+      "category": "food",
+      "amount": "5.00",
+      "id": 23
     }
   ]
 }

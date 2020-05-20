@@ -4,7 +4,19 @@ import Transaction from "./Transaction";
 const TransactionsList = (props) => {
   let transaction=props.transaction
   .filter((transaction)=> {return transaction.description.toLocaleLowerCase().indexOf(props.search.toLocaleLowerCase())!==-1})
+  if(props.abcCategorty){
+    transaction=transaction.sort((a,b)=>a.category.localeCompare(b.category))
+  }
+  if(props.abcCategorty){
+    transaction=transaction.sort((a,b)=>a.description.localeCompare(b.description))
+  }
   return (
+    <>
+        <label>Category</label>
+        <input type="checkbox" name="abcCategorty" checked={props.abcCategorty} onChange={props.handleChange}/>
+        <label>Description</label>
+        <input type="checkbox" name="abcDescription" checked={props.abcDescription} onChange={props.handleChange}/><br/>
+    
     <table className="ui celled striped padded table">
       <tbody>
         <tr>
@@ -27,6 +39,7 @@ const TransactionsList = (props) => {
         })}
       </tbody>
     </table>
+    </>
   );
 };
 

@@ -10,7 +10,9 @@ class AccountContainer extends Component {
     description:'',
     category:'',
     amount:'',
-    search:''
+    search:'',
+    abcDescription:false,
+    abcCategorty:false
 
   }
   getTransactions=()=>{
@@ -44,6 +46,7 @@ class AccountContainer extends Component {
     }))
     .then(this.getTransactions)
   }
+  
   componentDidMount(){
     this.getTransactions()
   }
@@ -58,15 +61,15 @@ class AccountContainer extends Component {
     this.setState({[name]:value})
   }
   handleChange=(event)=>{
-    const{name,value}=event.target
-    this.setState({[name]:value})
+    const{name,value,type,checked}=event.target
+    type==="checkbox"? this.setState({[name]:checked}):this.setState({[name]:value})
   }
   render() {
     return (
       <div>
         <Search handleSearch={this.handleSearch}{...this.setState}/>
         <AddTransactionForm handleChange={this.handleChange}{...this.state} AddTransactions={this.AddTransactions}/>
-        <TransactionsList deleteTransaction={this.deleteTransaction}{...this.state} />
+        <TransactionsList handleChange={this.handleChange} deleteTransaction={this.deleteTransaction}{...this.state} />
       </div>
     );
   }
