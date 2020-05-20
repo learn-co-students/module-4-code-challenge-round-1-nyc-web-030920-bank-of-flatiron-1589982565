@@ -5,7 +5,12 @@ import AddTransactionForm from "./AddTransactionForm";
 
 class AccountContainer extends Component {
   state = {
-    transactions: []
+    transactions: [],
+    // id: null,
+    date: '',
+    description: '',
+    category: '',
+    amount: ''
   }
 
   componentDidMount(){
@@ -18,18 +23,51 @@ class AccountContainer extends Component {
     })
   }
 
-  handleChange = () => {
+  handleChange = (event) => {
+    //updates state with form values
     console.log('handling change')
+    console.log('event: ', event)
+    console.log('event.target: ', event.target)
+    console.log('event.target.value: ', event.target.value)
+    console.log('event.target.name: ', event.target.name)
+
+    this.setState({ [event.target.name]: event.target.value })
+    console.log('state: ', this.state)
   }
 
+  handleSubmit = (event) => {
+    //takes what is in state and adds as a new transaction in the db
+    event.preventDefault()
+    console.log('you hit the submit button')
+
+    let { date, description, category, amount } = this.state //pull out stuff from state
+    fetch('http://localhost:6001/transactions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        date,
+        description,
+        category,
+        amount
+      })
+    })
+  }
+
+  handleSearch = () => {
+    console.log('searching')
+  }
 
   render() {
     console.log(this.state)
+    let { transactions, date, description, category, amount } = this.state
     return (
       <div>
-        <Search />
-        <AddTransactionForm handleChange={this.handleChange}/>
-        <TransactionsList transactions={this.state.transactions} />
+        <Search handleSearch={this.handleSearch} />
+        <AddTransactionForm handleChange={this.handleChange} date={date} description={description} category={category} amount={amount} handleSubmit={this.handleSubmit}/>
+        <TransactionsList transactions={transactions} />
       </div>
     );
   }
