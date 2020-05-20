@@ -30,13 +30,25 @@ These are the endpoints you might need:
 - DELETE: `/transactions/:id`
 
 ## Core Deliverables
+    App 
+     |
+AccountContainer
+|-Search(form) - needs method to setState(controlled form)
+|
+|-AddTransactionForm(also a form with submit button)
+|
+|-TransactionsList(container) -Holds transactions
+            |=Transaction(s)-Renders transactions
 
 As a user, I should be able to:
 
 - See a table of the transactions.
+Rendered. 
 - Fill out and submit the form to add a new transaction. This should add a the new transaction to the table **as well as post the new transaction to the backend API for persistence**.
-- Filter transactions by typing into the search bar. Only transactions with a description matching the search term should be shown in the transactions table.
+Done. Reset form as well. Controlled form. 
 
+- Filter transactions by typing into the search bar. Only transactions with a description matching the search term should be shown in the transactions table.
+Filtered by description depending on search. Controlled form.
 ## Advanced Deliverables
 
 These deliverables are not required to pass the code challenge, but if you have the extra time, or even after the code challenge, they are a great way to stretch your skills.
