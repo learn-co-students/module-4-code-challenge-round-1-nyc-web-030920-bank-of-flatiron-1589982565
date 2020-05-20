@@ -15,7 +15,20 @@ class AddTransactionForm extends Component {
 
   handleSubmit=event=>{
     event.preventDefault()
-    
+    const {date, category, description, amount} = this.state
+    this.props.onSubmit(this.state)
+
+    fetch(`http://localhost:6001/transactions`, {
+      method: 'POST',
+      header: 
+      {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+
+      })
+    })
 
   }
 
