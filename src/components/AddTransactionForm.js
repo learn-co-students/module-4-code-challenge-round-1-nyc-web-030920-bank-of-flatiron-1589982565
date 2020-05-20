@@ -4,7 +4,7 @@ class AddTransactionForm extends Component {
   render() {
     // console.log("Trans form props =>", this.props.newTransaction)
     const {amount, date, category, description} = this.props.newTransaction
-    const {handleChange, handleSubmit} = this.props
+    const { handleSort, handleChange, handleSubmit} = this.props
     return (
       <div className="ui segment">
         <form onSubmit={handleSubmit} className="ui form">
@@ -25,6 +25,10 @@ class AddTransactionForm extends Component {
             Add Transaction
           </button>
         </form>
+        <br/>
+        <button onClick={handleSort} name="description" className="ui button">Description</button>
+        <button onClick={handleSort} name="category" className="ui button">Category</button>
+        <button onClick={handleSort} name="amount" className="ui button">Amount</button>
       </div>
     );
   }

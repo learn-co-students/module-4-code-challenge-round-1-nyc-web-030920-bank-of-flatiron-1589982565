@@ -67,13 +67,31 @@ class AccountContainer extends Component {
       this.setState({transactions: this.state.transactions.filter(trans => trans.id === id ? null : trans)})
   }
 
+  handleSort = (e) => {
+    let sortTerm = e.target.name
+    if(sortTerm === "description"){
+      this.setState({
+        transactions: this.state.transactions.sort((a,b) => a.description.localeCompare(b.description))
+      })
+    } else if (sortTerm === "category"){
+      this.setState({
+        transactions: this.state.transactions.sort((a,b) => a.category.localeCompare(b.category))
+      })
+    } else if (sortTerm === "amount"){
+      this.setState({
+        transactions: this.state.transactions.sort((a,b) => a.amount <= b.amount ? -1 : 1)
+      })
+    }
+    // console.log("I heard the click")
+  }
+
   render() {
     // console.log("AccountContainer State =>", this.state)
     let filteredTransactions = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       <div>
         <Search handleSearch={this.handleSearch} search={this.state.search} />
-        <AddTransactionForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} newTransaction={this.state.newTransaction} />
+        <AddTransactionForm handleSort={this.handleSort} handleSubmit={this.handleSubmit} handleChange={this.handleChange} newTransaction={this.state.newTransaction} />
         <TransactionsList handleDelete={this.handleDelete} transactions={filteredTransactions} />
       </div>
     );
