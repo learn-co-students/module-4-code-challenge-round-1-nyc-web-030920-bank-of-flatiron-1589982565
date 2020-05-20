@@ -104,20 +104,6 @@
       "category": "Food",
       "amount": -12.48,
       "id": 15
-    },
-    {
-      "date": "2020-05-20",
-      "description": "Starbucks",
-      "category": "Food",
-      "amount": -6,
-      "id": 16
-    },
-    {
-      "date": "2020-05-20",
-      "description": "Flower",
-      "category": "Gift",
-      "amount": -12.5,
-      "id": 17
     }
   ]
 }

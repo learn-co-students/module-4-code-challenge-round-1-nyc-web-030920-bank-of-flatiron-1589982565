@@ -85,6 +85,12 @@ class AccountContainer extends Component {
     return sorted
   }
 
+  deleteTransaction = (id) => {
+    fetch(`${transactionsUrl}/${id}`, {method: 'DELETE'})
+    this.setState({
+      transactions: [...this.state.transactions].filter(transaction => transaction.id !== id)
+    })
+  }
 
   render() {
     console.log("🔫🔫🔫🔫🔫AccountContainer:", this.state)
@@ -100,8 +106,8 @@ class AccountContainer extends Component {
 
         <SortTransactions type={this.state.sortBy} handleChange={this.sortOption}/>
         {this.state.sortBy
-        ? <TransactionsList transactions={sorted}/>
-        : <TransactionsList transactions={filtered}/>
+        ? <TransactionsList transactions={sorted} handleDelete={this.deleteTransaction}/>
+        : <TransactionsList transactions={filtered} handleDelete={this.deleteTransaction}/>
         }
 
         
