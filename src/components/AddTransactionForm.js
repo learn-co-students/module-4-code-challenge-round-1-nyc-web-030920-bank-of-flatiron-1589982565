@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
+  state = {
+    date:'',
+    description:'',
+    category:'',
+    amount:''
+  }
   render() {
+
+    const {date,description,category,amount} = this.state
+    
     return (
       <div className="ui segment">
         <form className="ui form">
