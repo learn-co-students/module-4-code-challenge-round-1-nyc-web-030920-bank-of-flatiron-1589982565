@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
   render() {
-    const {date, description,category,amount,fillForm} =this.props
+    const {date, description,category,amount,fillForm,toggleSubmit} =this.props
     return (
       <div className="ui segment">
         <form className="ui form">
@@ -19,7 +19,7 @@ class AddTransactionForm extends Component {
               onChange={fillForm}
             />
           </div>
-          <button className="ui button" type="submit">
+          <button className="ui button" type="submit" onClick={toggleSubmit}>
             Add Transaction
           </button>
         </form>
