@@ -28,7 +28,7 @@ class AccountContainer extends Component {
   fetchTransactions = () => {
     fetch(BASE_URL).then(resp => resp.json()).then(transactions => this.setState({ transactions }))
   }
-  componentDidMount() {
+  componentDidMount()  {
     this.fetchTransactions()
   }
   addTransaction = (e) => {
