@@ -1,18 +1,28 @@
-import React from "react";
+import React, {Component} from "react";
 
-const Search = () => {
+class Search extends Component {
+
+  state={
+    currentQuery: ''
+  }
+  handleSearch = (event) => {
+    this.setState({currentQuery: event.target.value})
+    this.props.searchFunc(this.state.currentQuery)
+  }
+
+  render() {
   return (
     <div className="ui large fluid icon input">
       <input
+        value={this.state.currentQuery}
         type="text"
         placeholder={"Search your Recent Transactions"}
-        onChange={() => {
-          console.log("Searching...");
-        }}
+        onChange={this.handleSearch}
       />
       <i className="circular search link icon"></i>
     </div>
   );
+      }
 };
 
 export default Search;

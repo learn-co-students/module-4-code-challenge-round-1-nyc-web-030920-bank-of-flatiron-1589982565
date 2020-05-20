@@ -35,10 +35,16 @@ componentDidMount() {
   this.fetchData()
 }
 
+searchFunc = (query) => {
+  const filtered = this.state.transactions.filter(transaction => transaction.description === query)
+  this.setState({transactions: filtered})
+  this.fetchData()
+}
+
   render() {
     return (
       <div>
-        <Search />
+        <Search searchFunc={this.searchFunc} />
         <AddTransactionForm updateFunc={this.addTransaction} />
         <TransactionsList transactions={this.state.transactions} />
       </div>
