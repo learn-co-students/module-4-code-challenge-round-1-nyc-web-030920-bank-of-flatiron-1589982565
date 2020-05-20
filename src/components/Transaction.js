@@ -5,9 +5,10 @@ const Transaction = (props) => {
   return (
     <tr>
       <td>{date}</td>
-      <td>{description}<button onClick={() => props.handleDelete(id)}>Delete</button></td>
+      <td>{description}</td>
       <td>{category}</td>
       <td>{amount}</td>
+      <td onClick={() => props.handleDelete(id)}><button>Delete Transaction</button></td>
     </tr>
       
 

@@ -109,8 +109,6 @@ class AccountContainer extends Component {
         ? <TransactionsList transactions={sorted} handleDelete={this.deleteTransaction}/>
         : <TransactionsList transactions={filtered} handleDelete={this.deleteTransaction}/>
         }
-
-        
       </div>
     );
   }
