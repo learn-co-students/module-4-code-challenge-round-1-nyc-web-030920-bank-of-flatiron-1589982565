@@ -72,7 +72,7 @@ class AccountContainer extends Component {
     let { transactions, date, description, category, amount, search } = this.state
     return (
       <div>
-        <Search handleSearch={this.handleSearch} />
+        <Search handleSearch={this.handleSearch} search={search}/>
         <AddTransactionForm handleChange={this.handleChange} date={date} description={description} category={category} amount={amount} handleSubmit={this.handleSubmit}/>
         <TransactionsList transactions={transactions} search={search}/>
       </div>
