@@ -22,7 +22,6 @@ class AccountContainer extends Component {
       },
       body: JSON.stringify(transactionObj)
     })
-    // this.fetchData()
     console.log(this.state)
   }
 
@@ -38,7 +37,6 @@ componentDidMount() {
 searchFunc = (query) => {
   const filtered = this.state.transactions.filter(transaction => transaction.description === query)
   this.setState({transactions: filtered})
-  this.fetchData()
 }
 
   render() {

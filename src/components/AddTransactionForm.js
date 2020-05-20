@@ -39,7 +39,7 @@ handleAmountChange = (event) => {
               value={this.state.amount} onChange={this.handleAmountChange}
             />
           </div>
-          <button onClick={this.props.updateFunc(this.state)} className="ui button" type="submit">
+          <button onClick={() => {this.props.updateFunc(this.state)}} className="ui button" type="submit">
             Add Transaction
           </button>
         </form>
