@@ -16,7 +16,8 @@ class AccountContainer extends Component {
       category: "",
       amount: ""
     },
-    search: ""
+    search: "",
+    sortBy: ""
   }
 
   fetchTransactions = () => {
@@ -66,7 +67,7 @@ class AccountContainer extends Component {
   }
 
   deleteTransaction = id => {
-    
+
     let transaction = this.state.transactions.find(transaction => transaction.id === id)
 
     fetch(`${API}/${id}`, {
@@ -83,12 +84,24 @@ class AccountContainer extends Component {
     }))
   }
 
+  handleSortBy = event => {
+    this.setState({
+      sortBy: event.target.value
+    })
+  }
+
+  clearSortBy = () => {
+    this.setState({
+      sortBy: ""
+    })
+  }
+
   render() {
     return (
       <div>
-        <Search search={this.state.search} handleSearch={this.handleSearch}/>
+        <Search search={this.state.search} handleSearch={this.handleSearch} handleSortBy={this.handleSortBy}/>
         <AddTransactionForm newTransaction={this.state.newTransaction} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-        <TransactionsList transactions={this.state.transactions} search={this.state.search} deleteTransaction={this.deleteTransaction}/>
+        <TransactionsList transactions={this.state.transactions} search={this.state.search} deleteTransaction={this.deleteTransaction} sortBy={this.state.sortBy} clearSortBy={this.clearSortBy}/>
       </div>
     );
   }

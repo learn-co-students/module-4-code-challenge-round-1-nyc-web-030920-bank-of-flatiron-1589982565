@@ -3,19 +3,42 @@ import Transaction from "./Transaction";
 
 const TransactionsList = props => {
   
+  // render transactions based on search, sorting, default listing
   const renderTransactions = () => {
 
-    const {search,transactions} = props 
+    const {search,transactions, sortBy, clearSortBy} = props 
 
-    if (!search) { // if empty string for search (falsey), make truthy
+    if (sortBy === 'category') {
+      clearSortBy()
       return (
-        transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
+        transactions.sort((a,b) => a.category > b.category ? 1 : -1).map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
       )
-    } else {
+    } else if (sortBy === 'description') {
+      clearSortBy()
       return (
-        transactions.filter(transaction => transaction.description.includes(search)).map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
+        transactions.sort((a,b) => a.description > b.description ? 1 : -1).map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
       )
+    } else if (search) {
+      return (
+            transactions.filter(transaction => transaction.description.toLowerCase().includes(search)).map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
+          )
+    } else if (!search) {
+      return (
+            transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
+          )
     }
+
+    // code without sorting (only searching)
+
+    // if (!search) { // if empty string for search (falsey), make truthy
+    //   return (
+    //     transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
+    //   )
+    // } else {
+    //   return (
+    //     transactions.filter(transaction => transaction.description.toLowerCase().includes(search)).map(transaction => <Transaction key={transaction.id} transaction={transaction} deleteTransaction={props.deleteTransaction}/>)
+    //   )
+    // }
   }
 
   return (
