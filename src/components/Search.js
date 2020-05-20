@@ -4,15 +4,15 @@ const Search = (props) => {
   return (
     <div className="ui large fluid icon input">
       <input
-        name= "search"
+        name="search"
         type="text"
         placeholder={"Search your Recent Transactions"}
-        onChange={ 
-         props.handleChanges
+        onChange={
+          props.handleChanges
         }
       />
       <i className="circular search link icon"></i>
-     
+
     </div>
   );
 };
