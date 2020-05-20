@@ -15,10 +15,30 @@ class AddTransactionForm extends Component {
     });
   }
 
+  onSubmit = (event) => {
+    event.preventDefault();
+    console.log("submit", event.target);
+
+    const newTransaction = {
+      date: event.target.date.value,
+      description: event.target.description.value,
+      category: event.target.category.value,
+      amount: event.target.amount.value
+    };
+
+    this.props.submitTransaction(newTransaction);
+    this.setState({
+      date: "",
+      description: "",
+      category: "",
+      amount: 0
+    });
+  }
+
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form" onSubmit={this.props.submitTransaction}>
+        <form className="ui form" onSubmit={this.onSubmit}>
           <div className="inline fields">
             <input 
               type="date" 

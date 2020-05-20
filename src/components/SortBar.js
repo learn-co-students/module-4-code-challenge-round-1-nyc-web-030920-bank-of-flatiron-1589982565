@@ -5,6 +5,47 @@ const SortBar = (props) => {
     return (
         <div className="sort-bar">
             Sort Transactions By:
+            <RadioSpan 
+                id="default_sort" value="default" label="Default" 
+                sortBy={props.sortBy} 
+                updateSort={props.updateSort}
+            />
+
+            <RadioSpan 
+                id="description_sort" value="description" label="Description" 
+                sortBy={props.sortBy} 
+                updateSort={props.updateSort}
+            />
+
+            <RadioSpan 
+                id="category_sort" value="category" label="Category" 
+                sortBy={props.sortBy} 
+                updateSort={props.updateSort}
+            />
+        </div>
+    );
+}
+
+export default SortBar;
+
+// just messing around
+const RadioSpan = (props) => {
+    return (
+        <span className="radio-span">
+            <input 
+                id={props.id}
+                type="radio" 
+                group="sort" 
+                value={props.value}
+                onChange={props.updateSort}
+                checked={props.sortBy === props.value}
+            />
+            <label htmlFor={props.id}>{props.label}</label>
+        </span>
+    )
+}
+
+/*
             <span className="radio-span">
                 <input 
                     id="default_sort"
@@ -17,7 +58,7 @@ const SortBar = (props) => {
                 <label htmlFor="default_sort">Default</label>
             </span>
 
-            <span className="radio-span">
+                        <span className="radio-span">
                 <input 
                     id="description_sort"
                     type="radio" 
@@ -40,8 +81,4 @@ const SortBar = (props) => {
                 />
                 <label htmlFor="category_sort">Category</label>
             </span>
-        </div>
-    );
-}
-
-export default SortBar;
+*/

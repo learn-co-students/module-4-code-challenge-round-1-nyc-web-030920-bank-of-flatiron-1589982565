@@ -22,18 +22,8 @@ class AccountContainer extends Component {
 
   //
   //
-  submitTransaction = (event) => {
-    event.preventDefault();
-    console.log("submit", event.target);
-
-    const newTransaction = {
-      date: event.target.date.value,
-      description: event.target.description.value,
-      category: event.target.category.value,
-      amount: event.target.amount.value
-    };
-
-    console.log("new", newTransaction);
+  submitTransaction = (newTransaction) => {
+        console.log("new", newTransaction);
 
     requests.postNewTransaction(newTransaction)
     .then(data => {
