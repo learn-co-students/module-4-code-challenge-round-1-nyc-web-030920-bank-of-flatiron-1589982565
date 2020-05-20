@@ -15,7 +15,12 @@ class AccountContainer extends Component {
     option1: false,
     option2: false
   }
-
+  destroy=(e)=>{
+    console.log("MUAHAHAHAHA FOOLISH MORTALS!")
+    // fetch(`${BASE_URL}${e.target}`,{
+    //   method: 'DELETE'
+    // }).then(resp=>resp.json()).then()
+  }
   handleChanges = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -73,7 +78,7 @@ class AccountContainer extends Component {
         <Search handleChanges={this.handleChanges} />
         <Alphabetical handleRadio={this.handleRadio} option1={this.state.option1} option2={this.state.option2} />
         <AddTransactionForm handleChange={this.handleChanges} addTransaction={this.addTransaction} />
-        <TransactionsList transactions={list} />
+        <TransactionsList destroy={this.destroy}transactions={list} />
       </div>
     );
   }
