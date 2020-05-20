@@ -5,11 +5,20 @@ import AddTransactionForm from "./AddTransactionForm";
 
 
 class AccountContainer extends Component {
+state={
+  search: ''
+}
+
+handleSearh(){
+
+
+}
   render() {
     // console.log('accountContainer props:', this.props.transactions)
+    
     return (
       <div>
-        <Search />
+        <Search transactions={this.props.transactions} handleSearch={this.handleSearch}/>
         <AddTransactionForm />
         <TransactionsList transactions={this.props.transactions} />
       </div>
