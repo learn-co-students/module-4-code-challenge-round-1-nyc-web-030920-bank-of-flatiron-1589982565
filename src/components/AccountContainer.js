@@ -24,13 +24,17 @@ class AccountContainer extends Component {
     this.setState({search: event.target.value})
   }
 
+  removeTransaction = (id) => {
+    
+  }
+
   render() {
     const filteredTransactions = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       <div>
         <Search search={this.handleSearch}/>
         <AddTransactionForm addPurchase={this.addPurchase}/>
-        <TransactionsList transactions={filteredTransactions} />
+        <TransactionsList transactions={filteredTransactions} remove={this.removeTransaction} />
       </div>
     );
   }
