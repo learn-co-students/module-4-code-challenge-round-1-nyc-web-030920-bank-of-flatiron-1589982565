@@ -28,16 +28,22 @@ class AccountContainer extends Component {
     this.setState({transactions: [...this.state.transactions, trans]})
   }
 
+  removeTrans = (transid) => {
+    this.setState({ transactions: this.state.transactions.filter(trans => trans.id !== transid)})
+  }
+
   render() {
     console.clear()
     console.log('Acct Cont State :>> ', this.state);
     const { transactions, searched } = this.state
-    let filteredTransactions = transactions.filter(transaction => transaction.description.toLowerCase().includes(searched.toLowerCase()))
+    const {addNewTrans, handleSearch, removeTrans} = this
+    let filteredTransactions = transactions.filter(transaction => 
+      transaction.description.toLowerCase().includes(searched.toLowerCase()))
     return (
       <div>
-        <Search searched={searched} handleSearch={this.handleSearch}/>
-        <AddTransactionForm addNewTrans={this.addNewTrans} />
-        <TransactionsList transactions={filteredTransactions}/>
+        <Search searched={searched} handleSearch={handleSearch}/>
+        <AddTransactionForm addNewTrans={addNewTrans} />
+        <TransactionsList removeTrans={removeTrans} transactions={filteredTransactions}/>
       </div>
     );
   }

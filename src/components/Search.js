@@ -2,7 +2,6 @@ import React from "react";
 
 const Search = (props) => {
   const {searched, handleSearch} = props
-  console.log('search props :>> ', props);
   return (
     <div className="ui large fluid icon input">
       <input

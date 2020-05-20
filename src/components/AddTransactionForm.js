@@ -8,6 +8,11 @@ state = {
     amount: ''
 }
 
+blankSlate = {date: '',
+description: '',
+category: '',
+amount: ''}
+
 handleChange = (event) => {
   this.setState({ [event.target.name]: event.target.value})
 }
@@ -25,11 +30,16 @@ handleSubmit = (event) => {
     })
     .then(response => response.json())
     .then(newTrans => this.props.addNewTrans(newTrans))
+    .then(this.setState({
+      date: '',
+      description: '',
+      category: '',
+      amount: ''
+    }))
 }
 
   render() {
     const {date, description, category, amount} = this.state
-    console.log('Form state :>> ', this.state);
     return (
       <div className="ui segment">
         <form className="ui form" onSubmit={this.handleSubmit}>
